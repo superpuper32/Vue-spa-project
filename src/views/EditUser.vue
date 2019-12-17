@@ -4,7 +4,11 @@
       Loading...
     </div>
 
-    <user-form v-else :user="user" />
+    <user-form v-else :user="user" @update="user = $event" />
+
+    <button type="bitton" class="btn btn-primary" @click="save">
+      Save
+    </button>
   </div>
 </template>
 
@@ -35,6 +39,12 @@ export default {
       axios
         .get('http://localhost:3004/users/' + this.id)
         .then(response => (this.user = response.data))
+        .catch(error => console.error(error))
+    },
+    save() {
+      axios
+        .patch('http://localhost:3004/users/' + this.id, this.user)
+        .then(() => this.$router.push('/users'))
         .catch(error => console.error(error))
     }
   }

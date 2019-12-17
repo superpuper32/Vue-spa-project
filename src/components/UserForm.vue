@@ -2,33 +2,35 @@
   <div>
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control" :value="user.firstName" />
+      <input v-model="localUser.firstName" type="text" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Surname</label>
-      <input type="text" class="form-control" :value="user.lastName" />
+      <input v-model="localUser.lastName" type="text" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Email</label>
-      <input type="email" class="form-control" :value="user.email" />
+      <input v-model="localUser.email" type="email" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Phone</label>
-      <input type="text" class="form-control" :value="user.phone" />
+      <input v-model="localUser.phone" type="text" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Registered</label>
-      <input type="text" class="form-control" :value="user.registered" />
+      <input v-model="localUser.registered" type="text" class="form-control" />
     </div>
 
     <div class="form-group">
       <label>Active</label>
-      <input type="checkbox" class="form-check-" :value="user.isActive" />
+      <input v-model="localUser.isActive" type="checkbox" class="form-check-" />
     </div>
+
+    <pre>{{ localUser }}</pre>
   </div>
 </template>
 
@@ -39,6 +41,29 @@ export default {
     user: {
       type: Object,
       required: true
+    }
+  },
+  data: () => ({
+    localUser: null
+  }),
+  watch: {
+    //   user: {
+    //       deep: true,
+    //       handler() {
+    //           this.localUser = Object.assign({}, this.user)
+    //       }
+    //   },
+    localUser: {
+      deep: true,
+      handler: 'updateUser'
+    }
+  },
+  created() {
+    this.localUser = Object.assign({}, this.user)
+  },
+  methods: {
+    updateUser() {
+      this.$emit('update', Object.assign({}, this.localUser))
     }
   }
 }
