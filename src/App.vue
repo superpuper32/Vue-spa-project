@@ -13,19 +13,20 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link class="nav-link" to="/">
+          <router-link tag="li" class="nav-item" to="/" exact-active-class="active">
+            <a class="nav-link">
               Home
-            </router-link>
-          </li>
+            </a>
+          </router-link>
 
-          <li class="nav-item">
-            <router-link class="nav-link" to="/users">
+          <router-link tag="li" class="nav-item" to="/users" exact-active-class="active">
+            <a class="nav-link">
               Users
-            </router-link>
-          </li>
+            </a>
+          </router-link>
         </ul>
       </div>
     </nav>
