@@ -16,13 +16,13 @@
 
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <router-link tag="li" class="nav-item" to="/" exact-active-class="active">
+          <router-link tag="li" class="nav-item" to="/">
             <a class="nav-link">
               Home
             </a>
           </router-link>
 
-          <router-link tag="li" class="nav-item" to="/users" exact-active-class="active">
+          <router-link tag="li" class="nav-item" to="/users">
             <a class="nav-link">
               Users
             </a>
