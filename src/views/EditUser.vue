@@ -4,9 +4,9 @@
       Loading...
     </div>
 
-    <user-form v-else :user="user" @update="user = $event" />
+    <user-form v-else v-model="user" />
 
-    <button type="bitton" class="btn btn-primary" @click="save">
+    <button type="button" class="btn btn-primary" @click="save">
       Save
     </button>
   </div>

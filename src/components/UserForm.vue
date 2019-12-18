@@ -29,8 +29,6 @@
       <label>Active</label>
       <input v-model="localUser.isActive" type="checkbox" class="form-check-" />
     </div>
-
-    <pre>{{ localUser }}</pre>
   </div>
 </template>
 
@@ -38,7 +36,7 @@
 export default {
   name: 'UserForm',
   props: {
-    user: {
+    value: {
       type: Object,
       required: true
     }
@@ -50,7 +48,10 @@ export default {
     //   user: {
     //       deep: true,
     //       handler() {
-    //           this.localUser = Object.assign({}, this.user)
+    //         if (deepEqual(this.user, this.localUser)) {
+    //             return;
+    //         }
+    //         this.localUser = Object.assign({}, this.user);
     //       }
     //   },
     localUser: {
@@ -59,11 +60,11 @@ export default {
     }
   },
   created() {
-    this.localUser = Object.assign({}, this.user)
+    this.localUser = Object.assign({}, this.value)
   },
   methods: {
     updateUser() {
-      this.$emit('update', Object.assign({}, this.localUser))
+      this.$emit('input', Object.assign({}, this.localUser))
     }
   }
 }
