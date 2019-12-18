@@ -35,6 +35,10 @@
 <script>
 export default {
   name: 'UserForm',
+  model: {
+    prop: 'user',
+    event: 'ultrasave'
+  },
   props: {
     value: {
       type: Object,
@@ -60,11 +64,11 @@ export default {
     }
   },
   created() {
-    this.localUser = Object.assign({}, this.value)
+    this.localUser = Object.assign({}, this.user)
   },
   methods: {
     updateUser() {
-      this.$emit('input', Object.assign({}, this.localUser))
+      this.$emit('ultrasave', Object.assign({}, this.localUser))
     }
   }
 }
