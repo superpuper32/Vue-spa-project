@@ -40,7 +40,7 @@ export default {
     event: 'ultrasave'
   },
   props: {
-    value: {
+    user: {
       type: Object,
       required: true
     }
@@ -53,9 +53,9 @@ export default {
     //       deep: true,
     //       handler() {
     //         if (deepEqual(this.user, this.localUser)) {
-    //             return;
+    //             return
     //         }
-    //         this.localUser = Object.assign({}, this.user);
+    //         this.localUser = Object.assign({}, this.user)
     //       }
     //   },
     localUser: {

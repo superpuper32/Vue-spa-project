@@ -11,12 +11,11 @@
 
 <script>
 import axios from 'axios'
-import UserList from '@/components/UserList.vue'
 
 export default {
   name: 'UsersPage',
   components: {
-    'user-list': UserList
+    UserList: () => import('@/components/UserList.vue')
   },
   data: function() {
     return {

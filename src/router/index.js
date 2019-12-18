@@ -1,9 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import Users from '@/views/Users.vue'
-import EditUser from '@/views/EditUser.vue'
 
 Vue.use(VueRouter)
 
@@ -13,19 +9,19 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: Home
+      component: () => import('@/views/Home.vue')
     },
     {
       path: '/about',
-      component: About
+      component: () => import('@/views/About.vue')
     },
     {
       path: '/users',
-      component: Users
+      component: () => import('@/views/Users.vue')
     },
     {
       path: '/edit/:id',
-      component: EditUser
+      component: () => import('@/views/EditUser.vue')
     }
   ]
 })
