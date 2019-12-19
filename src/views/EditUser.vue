@@ -14,12 +14,12 @@
 
 <script>
 import axios from 'axios'
-import UserForm from '@/components/UserForm.vue'
+// import UserForm from '@/components/UserForm.vue'
 
 export default {
   name: 'EditUser',
   components: {
-    UserForm
+    UserForm: () => import('@/components/UserForm.vue')
   },
   data: function() {
     return {

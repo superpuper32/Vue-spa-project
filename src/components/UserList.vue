@@ -1,33 +1,77 @@
 <template>
-  <table class="table table-striped table-dark">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-        <th>Активен</th>
-        <th>Баланс</th>
-        <th>Email</th>
-        <th>Телефон</th>
-        <th>Зарегистрирован</th>
-      </tr>
-    </thead>
+  <div>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <p class="navbar-brand">Количество пользователей</p>
 
-    <tbody>
-      <tr v-for="user in users" :key="user.id">
-        <td>
-          <router-link :to="'/edit/' + user.id"># {{ user.id }}</router-link>
-        </td>
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.isActive }}</td>
-        <td>{{ user.balance }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.phone }}</td>
-        <td>{{ user.registered }}</td>
-      </tr>
-    </tbody>
-  </table>
+      <form class="form-inline">
+        <button class="btn btn-primary my-2 my-sm-0" type="button">Update list</button>
+      </form>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-5 mb-3">
+        <label for="country">Выбрано элементов на страницу - </label>
+        <select class="custom-select d-block w-100" required>
+          <option value="">5</option>
+          <option>6</option>
+        </select>
+      </div>
+    </div>
+
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Активен</th>
+          <th>Баланс</th>
+          <th>Email</th>
+          <th>Телефон</th>
+          <th>Зарегистрирован</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="user in users" :key="user.id">
+          <td>
+            <router-link :to="'/edit/' + user.id"># {{ user.id }}</router-link>
+          </td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.isActive }}</td>
+          <td>{{ user.balance }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.registered }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <router-link to="/create">Create</router-link>
+
+    <p>Выбрана страница -</p>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>

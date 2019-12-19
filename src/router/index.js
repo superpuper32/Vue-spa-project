@@ -23,6 +23,10 @@ const router = new VueRouter({
     {
       path: '/edit/:id',
       component: () => import('@/views/EditUser.vue')
+    },
+    {
+      path: '/create',
+      component: () => import('@/views/CreateUser.vue')
     }
   ]
 })
