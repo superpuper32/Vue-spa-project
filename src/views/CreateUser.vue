@@ -1,7 +1,8 @@
 <template>
   <div>
-    Create page
-    <user-form />
+    <h2>Создание пользователя</h2>
+
+    <user-form v-model="user" />
   </div>
 </template>
 

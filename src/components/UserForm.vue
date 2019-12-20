@@ -1,33 +1,81 @@
 <template>
-  <div>
-    <div class="form-group">
-      <label>Name</label>
-      <input v-model="localUser.firstName" type="text" class="form-control" />
-    </div>
+  <div class="container bg-light">
+    <div class="row">
+      <div class="col-md-8">
+        <form>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label>Имя</label>
+              <input v-model="localUser.firstName" type="text" class="form-control" />
+            </div>
 
-    <div class="form-group">
-      <label>Surname</label>
-      <input v-model="localUser.lastName" type="text" class="form-control" />
-    </div>
+            <div class="col-md-6 mb-3">
+              <label>Фамилия</label>
+              <input v-model="localUser.lastName" type="text" class="form-control" />
+            </div>
+          </div>
 
-    <div class="form-group">
-      <label>Email</label>
-      <input v-model="localUser.email" type="email" class="form-control" />
-    </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input v-model="localUser.email" type="email" class="form-control" />
+          </div>
 
-    <div class="form-group">
-      <label>Phone</label>
-      <input v-model="localUser.phone" type="text" class="form-control" />
-    </div>
+          <div class="mb-3">
+            <label>Аватар</label>
+            <input v-model="localUser.picture" type="email" class="form-control" />
+          </div>
 
-    <div class="form-group">
-      <label>Registered</label>
-      <input v-model="localUser.registered" type="text" class="form-control" />
-    </div>
+          <div class="mb-3">
+            <label>Возраст</label>
+            <input v-model="localUser.age" type="number" class="form-control" />
+          </div>
 
-    <div class="form-group">
-      <label>Active</label>
-      <input v-model="localUser.isActive" type="checkbox" class="form-check-" />
+          <div class="mb-3">
+            <label>Телефон</label>
+            <input v-model="localUser.phone" type="text" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label>Зарегистрирован</label>
+            <input v-model="localUser.registered" type="text" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label>Активный</label>
+
+            <div class="checkbox-inline">
+              <input v-model="localUser.isActive" type="checkbox" /> Да
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label>Уровень доступа</label>
+            <select v-model="localUser.accessLevel" class="form-control">
+              <option v-for="item in accessList" :key="item">{{ item }}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>Баланс</label>
+            <input v-model="localUser.balance" type="text" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label>Адрес</label>
+            <input v-model="localUser.address" type="text" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label>Компания</label>
+            <input v-model="localUser.company" type="text" class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label>Биография</label>
+            <input v-model="localUser.about" type="text" class="form-control" />
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -46,18 +94,10 @@ export default {
     }
   },
   data: () => ({
-    localUser: null
+    localUser: null,
+    accessList: ['guest', 'user', 'admin']
   }),
   watch: {
-    //   user: {
-    //       deep: true,
-    //       handler() {
-    //         if (deepEqual(this.user, this.localUser)) {
-    //             return
-    //         }
-    //         this.localUser = Object.assign({}, this.user)
-    //       }
-    //   },
     localUser: {
       deep: true,
       handler: 'updateUser'

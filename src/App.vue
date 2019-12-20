@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-light">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
+      <router-link class="navbar-brand" tag="a" to="/">SINPAGAPP</router-link>
+
       <button
         class="navbar-toggler"
         type="button"

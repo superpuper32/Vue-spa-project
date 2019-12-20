@@ -1,15 +1,15 @@
 <template>
   <div>
-    <nav class="navbar navbar-light bg-light justify-content-between">
-      <p class="navbar-brand">Количество пользователей</p>
+    <nav class="navbar navbar-dark bg-dark justify-content-between rounded">
+      <p class="navbar-brand">Количество пользователей -</p>
 
       <form class="form-inline">
-        <button class="btn btn-primary my-2 my-sm-0" type="button">Update list</button>
+        <button class="btn btn-primary my-2 my-sm-0" type="button">Обновить</button>
       </form>
     </nav>
 
     <div class="row">
-      <div class="col-md-5 mb-3">
+      <div class="col-md-5">
         <label for="country">Выбрано элементов на страницу - </label>
         <select class="custom-select d-block w-100" required>
           <option value="">5</option>

@@ -14,7 +14,6 @@
 
 <script>
 import axios from 'axios'
-// import UserForm from '@/components/UserForm.vue'
 
 export default {
   name: 'EditUser',
