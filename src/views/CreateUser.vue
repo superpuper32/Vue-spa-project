@@ -3,11 +3,32 @@
     <h2>Создание пользователя</h2>
 
     <user-form v-model="user" />
+
+    <button type="button" class="btn btn-primary" @click="create">
+      Создать
+    </button>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
+const defaultUser = {
+  id: null,
+  isActive: false,
+  balance: '',
+  picture: 'http://placehold.it/128x128',
+  age: 0,
+  accessLevel: '',
+  firstName: '',
+  lastName: '',
+  company: '',
+  email: '',
+  phone: '',
+  address: '',
+  about: '',
+  registered: ''
+}
 
 export default {
   name: 'CreateUser',
@@ -16,15 +37,15 @@ export default {
   },
   data: function() {
     return {
-      user: null
+      user: defaultUser,
+      url: 'http://localhost:3004/users/'
     }
   },
   methods: {
-    createUser() {
-      axios
-        .post('http://localhost:3004/users/' + this.id, this.user)
-        .then(response => console.log(response))
-        .catch(error => console.error(error))
+    create() {
+      axios.post(this.url, this.user).then(() => {
+        this.$router.push({ path: 'users' })
+      })
     }
   }
 }

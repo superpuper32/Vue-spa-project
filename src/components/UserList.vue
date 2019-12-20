@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nav class="navbar navbar-dark bg-dark justify-content-between rounded">
-      <p class="navbar-brand">Количество пользователей -</p>
+    <nav class="navbar justify-content-between">
+      <p class="navbar-brand">Количество пользователей - {{ total }}</p>
 
       <form class="form-inline">
         <button class="btn btn-primary my-2 my-sm-0" type="button">Обновить</button>
@@ -9,7 +9,7 @@
     </nav>
 
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-5 mb-3">
         <label for="country">Выбрано элементов на страницу - </label>
         <select class="custom-select d-block w-100" required>
           <option value="">5</option>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <table class="table table-striped table-dark">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
@@ -35,7 +35,7 @@
       <tbody>
         <tr v-for="user in users" :key="user.id">
           <td>
-            <router-link :to="'/edit/' + user.id"># {{ user.id }}</router-link>
+            <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -84,8 +84,8 @@ export default {
     }
   },
   computed: {
-    total: function() {
-      return this.users.legth
+    total() {
+      return this.users.length
     }
   }
 }

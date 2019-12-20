@@ -17,11 +17,10 @@ export default {
   components: {
     UserList: () => import('@/components/UserList.vue')
   },
-  data: function() {
-    return {
-      users: []
-    }
-  },
+  data: () => ({
+    users: [],
+    url: 'http://localhost:3004/users'
+  }),
   mounted() {
     this.loadUsers()
   },
@@ -35,7 +34,7 @@ export default {
         }
       }
       axios
-        .get('http://localhost:3004/users', config)
+        .get(this.url, config)
         .then(response => (this.users = response.data))
         .catch(error => console.error(error))
     }
