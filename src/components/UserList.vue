@@ -9,12 +9,9 @@
     </nav>
 
     <div class="row">
-      <div class="col-md-5 mb-3">
-        <label for="country">Выбрано элементов на страницу - </label>
-        <select class="custom-select d-block w-100" required>
-          <option value="">5</option>
-          <option>6</option>
-        </select>
+      <div class="col-md-4 mb-3">
+        <rows-selector v-model.number="rowsPerPage" />
+        <label for="country">Выбрано элементов на страницу - {{ rowsPerPage }}</label>
       </div>
     </div>
 
@@ -75,14 +72,23 @@
 </template>
 
 <script>
+import RowsSelector from './dashboard/RowsSelector.vue'
+
 export default {
   name: 'UsersList',
+  components: {
+    RowsSelector
+  },
   props: {
     users: {
       type: Array,
       required: true
     }
   },
+  data: () => ({
+    list: [],
+    rowsPerPage: 5
+  }),
   computed: {
     total() {
       return this.users.length
