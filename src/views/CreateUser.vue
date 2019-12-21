@@ -35,7 +35,7 @@ export default {
   components: {
     UserForm: () => import('@/components/UserForm.vue')
   },
-  data: function() {
+  data: () => {
     return {
       user: defaultUser,
       url: 'http://localhost:3004/users/'

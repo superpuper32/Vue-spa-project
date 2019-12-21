@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar justify-content-between">
-      <p class="navbar-brand">Количество пользователей - {{ total }}</p>
+      <p class="navbar-brand">Количество пользователей - {{ totalRows }}</p>
 
       <form class="form-inline">
         <button class="btn btn-primary my-2 my-sm-0" type="button">Обновить</button>
@@ -44,8 +44,6 @@
         </tr>
       </tbody>
     </table>
-
-    <router-link to="/create">Create</router-link>
 
     <p>Выбрана страница -</p>
 

@@ -1,7 +1,9 @@
 <template>
-  <div id="app" class="bg-light">
+  <div class="bg-light">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <router-link class="navbar-brand" tag="a" to="/">SINPAGAPP</router-link>
+      <router-link class="navbar-brand" tag="a" to="/">
+        SINPAGAPP
+      </router-link>
 
       <button
         class="navbar-toggler"
@@ -18,25 +20,39 @@
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <router-link tag="li" class="nav-item" to="/">
-            <a class="nav-link">
+            <a href="#" class="nav-link">
               Home
             </a>
           </router-link>
 
           <router-link tag="li" class="nav-item" to="/users">
-            <a class="nav-link">
+            <a href="#" class="nav-link">
               Users
+            </a>
+          </router-link>
+
+          <router-link tag="li" class="nav-item" to="/create">
+            <a href="#" class="nav-link">
+              Create
             </a>
           </router-link>
         </ul>
       </div>
     </nav>
 
-    <main role="main" class="container">
+    <main id="app" role="main" class="container">
       <router-view />
     </main>
   </div>
 </template>
+
+<script>
+import 'bootstrap/dist/css/bootstrap.css'
+
+export default {
+  name: 'App'
+}
+</script>
 
 <style>
 #app {

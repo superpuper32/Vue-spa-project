@@ -12,10 +12,6 @@ const router = new VueRouter({
       component: () => import('@/views/Home.vue')
     },
     {
-      path: '/about',
-      component: () => import('@/views/About.vue')
-    },
-    {
       path: '/users',
       component: () => import('@/views/Users.vue'),
       meta: { requiresAuth: true }
