@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <table class="table table-hover">
+    <table class="table table-hover table-striped">
       <thead>
         <tr>
           <th>#</th>
@@ -49,35 +49,19 @@
 
     <p>Выбрана страница -</p>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <pages-pagination v-model.number="selectedPage" :per-page="rowsPerPage" :total="totalRows" />
   </div>
 </template>
 
 <script>
 import RowsSelector from './dashboard/RowsSelector.vue'
+import PagesPagination from './dashboard/PagesPagination.vue'
 
 export default {
   name: 'UsersList',
   components: {
-    RowsSelector
+    RowsSelector,
+    PagesPagination
   },
   props: {
     users: {
@@ -87,10 +71,11 @@ export default {
   },
   data: () => ({
     list: [],
-    rowsPerPage: 5
+    rowsPerPage: 5,
+    selectedPage: 1
   }),
   computed: {
-    total() {
+    totalRows() {
       return this.users.length
     }
   }
