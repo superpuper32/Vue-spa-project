@@ -38,6 +38,7 @@
           <div class="mb-3">
             <label>Зарегистрирован</label>
             <input v-model="localUser.registered" type="text" class="form-control" />
+            <datepicker v-model="localUser.registered" />
           </div>
 
           <div class="mb-3">
@@ -83,6 +84,9 @@
 <script>
 export default {
   name: 'UserForm',
+  components: {
+    datepicker: () => import('@/components/datepicker.vue')
+  },
   model: {
     prop: 'user',
     event: 'ultrasave'
