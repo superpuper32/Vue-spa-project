@@ -8,7 +8,7 @@
       </li>
 
       <li v-for="item in maxPages" :key="item" class="page-item">
-        <a class="page-link" href="#">{{ item }}</a>
+        <a class="page-link" href="#" @click.prevent="selectPage(item)">{{ item }}</a>
       </li>
 
       <li class="page-item">
@@ -43,6 +43,11 @@ export default {
   computed: {
     maxPages() {
       return Math.ceil(this.total / this.perPage)
+    }
+  },
+  methods: {
+    selectPage(page) {
+      this.$emit('input', page)
     }
   }
 }

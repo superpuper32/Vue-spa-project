@@ -30,7 +30,7 @@
       </thead>
 
       <tbody>
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="user in filteredRows" :key="user.id">
           <td>
             <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
           </td>
@@ -45,9 +45,9 @@
       </tbody>
     </table>
 
-    <p>Выбрана страница -</p>
-
     <pages-pagination v-model.number="selectedPage" :per-page="rowsPerPage" :total="totalRows" />
+
+    <p>Выбрана страница - {{ selectedPage }}</p>
   </div>
 </template>
 
@@ -70,11 +70,26 @@ export default {
   data: () => ({
     list: [],
     rowsPerPage: 5,
-    selectedPage: 1
+    selectedPage: 1,
+    loading: false
   }),
   computed: {
     totalRows() {
       return this.users.length
+    },
+
+    filteredRows() {
+      return this.users.filter((item, index) => {
+        const startIndex = (this.selectedPage - 1) * this.rowsPerPage
+        const endIndex = startIndex + this.rowsPerPage
+
+        return startIndex <= index && index < endIndex
+      })
+    }
+  },
+  watch: {
+    rowsPerPage() {
+      this.selectedPage = 1
     }
   }
 }
