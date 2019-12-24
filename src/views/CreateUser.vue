@@ -2,11 +2,18 @@
   <div>
     <h2>Создание пользователя</h2>
 
-    <user-form v-model="user" />
-
-    <button type="button" class="btn btn-primary" @click="create">
-      Создать
-    </button>
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body bg-light">
+        <user-form v-model="user">
+          <div slot="buttons">
+            <button type="button" class="btn btn-primary" @click="create">
+              Создать
+            </button>
+          </div>
+        </user-form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,7 +51,7 @@ export default {
   methods: {
     create() {
       axios.post(this.url, this.user).then(() => {
-        this.$router.push({ path: 'users' })
+        this.$router.push({ path: '/users' })
       })
     }
   }

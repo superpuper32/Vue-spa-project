@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-light">
+  <div class="container py-5">
     <div class="row">
       <div class="col-md-8">
         <form>
@@ -37,7 +37,6 @@
 
           <div class="mb-3">
             <label>Зарегистрирован</label>
-            <input v-model="localUser.registered" type="text" class="form-control" />
             <datepicker v-model="localUser.registered" />
           </div>
 
@@ -75,6 +74,8 @@
             <label>Биография</label>
             <input v-model="localUser.about" type="text" class="form-control" />
           </div>
+
+          <slot name="buttons" />
         </form>
       </div>
     </div>

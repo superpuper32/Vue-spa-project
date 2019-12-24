@@ -1,15 +1,24 @@
 <template>
   <div>
+    <h2>Редактирование пользователя</h2>
     <div v-if="!user" class="alert alert-warning">
       <i class="fa fa-refresh fa-spin" />
       Loading...
     </div>
 
-    <user-form v-else v-model="user">
-      <button type="button" class="btn btn-primary" @click="save">
-        Save
-      </button>
-    </user-form>
+    <div v-else class="card">
+      <div class="card-header">{{ user.id }} - {{ title }}</div>
+
+      <div class="card-body bg-light">
+        <user-form v-model="user">
+          <div slot="buttons">
+            <button type="button" class="btn btn-primary" @click="save">
+              Сохранить
+            </button>
+          </div>
+        </user-form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,7 +52,7 @@ export default {
     save() {
       axios
         .patch(this.url + this.id, this.user)
-        .then(() => this.$router.push('/users'))
+        .then(() => this.$router.push({ path: '/users' }))
         .catch(error => console.error(error))
     }
   }
