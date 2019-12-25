@@ -32,11 +32,19 @@ export default {
   },
   data: () => ({
     user: null,
-    url: 'http://localhost:3004/users/'
+    restUrl: 'http://localhost:3004/users/'
   }),
   computed: {
     id() {
       return this.$route.params.id
+    },
+    url() {
+      return `${this.restUrl}${this.id}`
+    },
+    title() {
+      return !this.user.firstName || !this.user.lastName
+        ? 'Пользователь'
+        : [this.user.firstName, this.user.lastName, this.user.phone].join(' ')
     }
   },
   mounted() {
@@ -45,13 +53,13 @@ export default {
   methods: {
     loadUser() {
       axios
-        .get(this.url + this.id)
+        .get(this.url)
         .then(response => (this.user = response.data))
         .catch(error => console.error(error))
     },
     save() {
       axios
-        .patch(this.url + this.id, this.user)
+        .patch(this.url, this.user)
         .then(() => this.$router.push({ path: '/users' }))
         .catch(error => console.error(error))
     }

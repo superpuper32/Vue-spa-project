@@ -20,34 +20,12 @@
 
       <table class="table table-hover table-striped">
         <thead>
-          <slot name="table-header">
-            <tr>
-              <th>#</th>
-              <th>Имя</th>
-              <th>Фамилия</th>
-              <th>Активен</th>
-              <th>Баланс</th>
-              <th>Email</th>
-              <th>Телефон</th>
-              <th>Зарегистрирован</th>
-            </tr>
-          </slot>
+          <slot name="table-header" />
         </thead>
 
         <tbody>
           <tr v-for="user in filteredRows" :key="user.id">
-            <slot name="table-row" :user="user">
-              <td>
-                <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
-              </td>
-              <td>{{ user.firstName }}</td>
-              <td>{{ user.lastName }}</td>
-              <td>{{ user.isActive }}</td>
-              <td>{{ user.balance }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.phone }}</td>
-              <td>{{ user.registered }}</td>
-            </slot>
+            <slot name="table-row" v-bind="user" />
           </tr>
         </tbody>
       </table>
@@ -67,6 +45,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'UsersList',
   components: {
@@ -74,13 +54,13 @@ export default {
     PagesPagination: () => import('@/components/dashboard/PagesPagination.vue')
   },
   props: {
-    users: {
-      type: Array,
+    url: {
+      type: String,
       required: true
     }
   },
   data: () => ({
-    list: [],
+    users: [],
     rowsPerPage: 5,
     selectedPage: 1,
     loading: false
@@ -102,6 +82,24 @@ export default {
   watch: {
     rowsPerPage() {
       this.selectedPage = 1
+    }
+  },
+  mounted() {
+    this.loadUsers()
+  },
+  methods: {
+    loadUsers() {
+      const token = '1234567890'
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+      axios
+        .get(this.url, config)
+        .then(response => (this.users = response.data))
+        .catch(error => console.error(error))
     }
   }
 }

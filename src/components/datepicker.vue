@@ -27,7 +27,7 @@ export default {
   },
   beforeDestroy() {
     if (this.fp) {
-      this.fp.destory()
+      this.fp.destroy()
     }
   },
   methods: {

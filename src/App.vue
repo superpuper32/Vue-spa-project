@@ -58,4 +58,8 @@ export default {
 #app {
   padding: 80px 0;
 }
+
+body {
+  background-color: #f8f9fa;
+}
 </style>
