@@ -20,30 +20,34 @@
 
       <table class="table table-hover table-striped">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Активен</th>
-            <th>Баланс</th>
-            <th>Email</th>
-            <th>Телефон</th>
-            <th>Зарегистрирован</th>
-          </tr>
+          <slot name="table-header">
+            <tr>
+              <th>#</th>
+              <th>Имя</th>
+              <th>Фамилия</th>
+              <th>Активен</th>
+              <th>Баланс</th>
+              <th>Email</th>
+              <th>Телефон</th>
+              <th>Зарегистрирован</th>
+            </tr>
+          </slot>
         </thead>
 
         <tbody>
           <tr v-for="user in filteredRows" :key="user.id">
-            <td>
-              <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
-            </td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.isActive }}</td>
-            <td>{{ user.balance }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.registered }}</td>
+            <slot name="table-row" :user="user">
+              <td>
+                <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
+              </td>
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.isActive }}</td>
+              <td>{{ user.balance }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.registered }}</td>
+            </slot>
           </tr>
         </tbody>
       </table>
@@ -63,14 +67,11 @@
 </template>
 
 <script>
-import RowsSelector from './dashboard/RowsSelector.vue'
-import PagesPagination from './dashboard/PagesPagination.vue'
-
 export default {
   name: 'UsersList',
   components: {
-    RowsSelector,
-    PagesPagination
+    RowsSelector: () => import('@/components/dashboard/RowsSelector.vue'),
+    PagesPagination: () => import('@/components/dashboard/PagesPagination.vue')
   },
   props: {
     users: {

@@ -5,7 +5,32 @@
     <div v-if="!users.length" class="alert alert-warning">
       Loading ...
     </div>
-    <user-list v-else :users="users" />
+    <user-list v-else :users="users">
+      <template v-slot:table-header>
+        <tr>
+          <th>#</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Активен</th>
+          <th>Баланс</th>
+          <th>Email</th>
+          <th>Телефон</th>
+          <th>Зарегистрирован</th>
+        </tr>
+      </template>
+      <template v-slot:table-row="{ user }">
+        <td>
+          <router-link :to="'/edit/' + user.id">{{ user.id }}</router-link>
+        </td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.isActive }}</td>
+        <td>{{ user.balance }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.registered }}</td>
+      </template>
+    </user-list>
   </div>
 </template>
 
