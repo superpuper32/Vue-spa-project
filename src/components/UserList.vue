@@ -5,7 +5,10 @@
         <p class="navbar-brand">Количество пользователей - {{ totalRows }}</p>
 
         <form class="form-inline">
-          <button class="btn btn-primary my-2 my-sm-0" type="button">Обновить</button>
+          <button class="btn btn-primary my-2 my-sm-0" type="button" @click="loadUsers">
+            <i :class="['fa fa-fw fa-refresh', loading ? 'fa-spin' : '']" />
+            Обновить
+          </button>
         </form>
       </nav>
     </div>
@@ -90,6 +93,7 @@ export default {
   methods: {
     loadUsers() {
       const token = '1234567890'
+      this.loading = true
 
       const config = {
         headers: {
@@ -98,7 +102,10 @@ export default {
       }
       axios
         .get(this.url, config)
-        .then(response => (this.users = response.data))
+        .then(response => {
+          this.users = response.data
+          this.loading = false
+        })
         .catch(error => console.error(error))
     }
   }

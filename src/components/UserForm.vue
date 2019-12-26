@@ -4,10 +4,24 @@
       <div class="col-md-8">
         <form>
           <div class="row">
-            <div class="col-md-6 mb-3">
+            <ValidationProvider
+              v-slot="{ errors, invalid }"
+              name="Имя"
+              rules="required"
+              tag="div"
+              class="col-md-6 mb-3"
+            >
               <label>Имя</label>
-              <input v-model="localUser.firstName" type="text" class="form-control" />
-            </div>
+              <input
+                v-model="localUser.firstName"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': invalid }"
+              />
+              <span v-if="errors.length" class="help-block text-danger">
+                {{ errors[0] }}
+              </span>
+            </ValidationProvider>
 
             <div class="col-md-6 mb-3">
               <label>Фамилия</label>
