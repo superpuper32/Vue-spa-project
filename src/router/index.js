@@ -17,6 +17,11 @@ const router = new VueRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/phones',
+      component: () => import('@/views/Phones.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/edit/:id',
       component: () => import('@/views/EditUser.vue')
     },

@@ -31,6 +31,12 @@
             </a>
           </router-link>
 
+          <router-link tag="li" class="nav-item" to="/phones">
+            <a href="#" class="nav-link">
+              Users Phones
+            </a>
+          </router-link>
+
           <router-link tag="li" class="nav-item" to="/create">
             <a href="#" class="nav-link">
               Create
