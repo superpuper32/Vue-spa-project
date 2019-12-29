@@ -36,7 +36,8 @@
 
           <div class="mb-3">
             <label>Аватар</label>
-            <input v-model="localUser.picture" type="email" class="form-control" />
+            <br />
+            <img class="img-thumbnail" :src="localUser.picture" />
             <avatar-upload v-model="localUser.picture" />
           </div>
 
@@ -57,7 +58,6 @@
 
           <div class="mb-3">
             <label>Активный</label>
-
             <div class="checkbox-inline">
               <input v-model="localUser.isActive" type="checkbox" /> Да
             </div>
@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     updateUser() {
-      this.$emit('ultrasave', Object.assign({}, this.localUser))
+      this.$emit('ultrasave', this.localUser)
     }
   }
 }
