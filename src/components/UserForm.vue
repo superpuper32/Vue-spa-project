@@ -37,6 +37,7 @@
           <div class="mb-3">
             <label>Аватар</label>
             <input v-model="localUser.picture" type="email" class="form-control" />
+            <avatar-upload v-model="localUser.picture" />
           </div>
 
           <div class="mb-3">
@@ -100,7 +101,8 @@
 export default {
   name: 'UserForm',
   components: {
-    datepicker: () => import('@/components/datepicker.vue')
+    datepicker: () => import('@/components/datepicker.vue'),
+    avatarUpload: () => import('@/components/avatar.vue')
   },
   model: {
     prop: 'user',
