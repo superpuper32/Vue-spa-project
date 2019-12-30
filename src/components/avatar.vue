@@ -34,7 +34,7 @@ export default {
       // https://api.imgur.com/oauth2/addclient
       const config = {
         headers: {
-          Authorization: 'Client-ID 3bef0b8892d4b04'
+          Authorization: 'Client-ID 770e90134b361a5'
         }
       }
       axios

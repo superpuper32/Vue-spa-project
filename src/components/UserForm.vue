@@ -29,10 +29,24 @@
             </div>
           </div>
 
-          <div class="mb-3">
+          <ValidationProvider
+            v-slot="{ errors, invalid }"
+            rules="required|email"
+            name="email"
+            tag="div"
+            class="mb-3"
+          >
             <label>Email</label>
-            <input v-model="localUser.email" type="email" class="form-control" />
-          </div>
+            <input
+              v-model="localUser.email"
+              type="email"
+              class="form-control"
+              :class="{ 'is-invalid': invalid }"
+            />
+            <span v-if="errors.length" class="help-block text-danger">
+              {{ errors[0] }}
+            </span>
+          </ValidationProvider>
 
           <div class="mb-3">
             <label>Аватар</label>
