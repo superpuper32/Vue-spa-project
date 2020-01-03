@@ -23,10 +23,24 @@
               </span>
             </ValidationProvider>
 
-            <div class="col-md-6 mb-3">
+            <ValidationProvider
+              v-slot="{ errors, invalid }"
+              name="Фамилия"
+              rules="required"
+              tag="div"
+              class="col-md-6 mb-3"
+            >
               <label>Фамилия</label>
-              <input v-model="localUser.lastName" type="text" class="form-control" />
-            </div>
+              <input
+                v-model="localUser.lastName"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': invalid }"
+              />
+              <span v-if="errors.length" class="help-block text-danger">
+                {{ errors[0] }}
+              </span>
+            </ValidationProvider>
           </div>
 
           <ValidationProvider
