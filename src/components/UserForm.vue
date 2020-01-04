@@ -115,7 +115,7 @@
 
           <div class="mb-3">
             <label>Биография</label>
-            <input v-model="localUser.about" type="text" class="form-control" />
+            <rich-editor v-model="localUser.about" />
           </div>
 
           <slot name="buttons" />
@@ -130,7 +130,8 @@ export default {
   name: 'UserForm',
   components: {
     datepicker: () => import('@/components/datepicker.vue'),
-    avatarUpload: () => import('@/components/avatar.vue')
+    avatarUpload: () => import('@/components/avatar.vue'),
+    richEditor: () => import('@/components/richEditor.vue')
   },
   model: {
     prop: 'user',
