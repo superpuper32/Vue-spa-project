@@ -15,6 +15,10 @@
             <button type="button" class="btn btn-primary" @click="save">
               Сохранить
             </button>
+
+            <button type="button" class="btn btn-outline-danger" @click="remove">
+              Удалить
+            </button>
           </div>
         </user-form>
       </div>
@@ -47,6 +51,9 @@ export default {
         : [this.user.firstName, this.user.lastName, this.user.phone].join(' ')
     }
   },
+  watch: {
+    $route: 'loadUser'
+  },
   mounted() {
     this.loadUser()
   },
@@ -62,6 +69,14 @@ export default {
         .patch(this.url, this.user)
         .then(() => this.$router.push({ path: '/users' }))
         .catch(error => console.error(error))
+    },
+    remove() {
+      const confirmRemove = confirm('Are you sure to remove this user?')
+      if (!confirmRemove) return
+
+      axios.delete(this.url).then(() => {
+        this.$router.push({ path: '/users' })
+      })
     }
   }
 }
