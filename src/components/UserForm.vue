@@ -65,7 +65,7 @@
           <div class="mb-3">
             <label>Аватар</label>
             <br />
-            <img class="img-thumbnail" :src="localUser.picture" />
+            <!-- <img class="img-thumbnail" :src="localUser.picture" /> -->
             <avatar-upload v-model="localUser.picture" />
           </div>
 

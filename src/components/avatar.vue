@@ -1,36 +1,54 @@
 <template>
-  <div>
-    <input :value="value" type="text" class="form-control" />
-
-    <input ref="file" type="file" class="hidden" @change="upload" />
-    <button type="button" class="btn btn-primary" @click="selectFile">
-      Выбрать...
-    </button>
+  <div ref="imagezone">
+    <div>
+      <img class="img-thumbnail" :src="picture" />
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <input ref="file" type="file" class="hidden" @change="upload" />
+        <button type="button" class="btn btn-primary" @click="selectFile">Выбрать...</button>
+      </div>
+      <div class="col-md-10">
+        <input v-model="picture" type="text" class="form-control" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Dropzone from 'dropzone'
+import 'dropzone/dist/dropzone.css'
 
 export default {
   name: 'AvatarUploader',
+  model: {
+    prop: 'picture'
+  },
   props: {
-    value: {
+    picture: {
       type: String,
       required: true
     }
   },
+  mounted() {
+    this.initDropzone()
+  },
   methods: {
-    setNewAvatar(url) {
-      this.$emit('input', url)
+    setNewAvatar(picture) {
+      this.$emit('input', picture)
     },
+
     selectFile() {
       this.$refs.file.click()
     },
+
     upload() {
       const url = 'https://api.imgur.com/3/image'
+
       const data = new FormData()
       data.append('image', this.$refs.file.files[0])
+
       // https://api.imgur.com/oauth2/addclient
       const config = {
         headers: {
@@ -44,6 +62,26 @@ export default {
           this.setNewAvatar(response.data.link)
           this.$refs.image.value = ''
         })
+    },
+
+    initDropzone() {
+      new Dropzone(this.$refs.imagezone, {
+        url: 'https://api.imgur.com/3/image',
+        paramName: 'image',
+        acceptedFiles: 'image/*',
+        method: 'post',
+        headers: {
+          'Cache-Control': null,
+          'X-Requested-With': null,
+          Authorization: 'Client-ID 3bef0b8892d4b04'
+        },
+        createImageThumbnails: false,
+        previewTemplate: '<div style="display:none"></div>',
+        success: (file, response) => {
+          this.setNewAvatar(response.data.link)
+          this.$refs.image.value = ''
+        }
+      })
     }
   }
 }
