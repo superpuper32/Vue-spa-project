@@ -1,13 +1,15 @@
 <template>
   <div ref="imagezone">
-    <div>
-      <img class="img-thumbnail" :src="picture" />
-    </div>
+    <p>
+      <img class="img-thumbnail mx-auto" :src="picture" />
+    </p>
+
     <div class="row">
       <div class="col-md-2">
-        <input ref="file" type="file" class="hidden" @change="upload" />
         <button type="button" class="btn btn-primary" @click="selectFile">Выбрать...</button>
+        <input ref="file" type="file" class="hidden" @change="upload" />
       </div>
+
       <div class="col-md-10">
         <input v-model="picture" type="text" class="form-control" />
       </div>
@@ -60,7 +62,7 @@ export default {
         .then(response => response.data)
         .then(response => {
           this.setNewAvatar(response.data.link)
-          this.$refs.image.value = ''
+          this.$refs.file.value = ''
         })
     },
 
@@ -73,13 +75,13 @@ export default {
         headers: {
           'Cache-Control': null,
           'X-Requested-With': null,
-          Authorization: 'Client-ID 3bef0b8892d4b04'
+          Authorization: 'Client-ID 770e90134b361a5'
         },
         createImageThumbnails: false,
         previewTemplate: '<div style="display:none"></div>',
         success: (file, response) => {
           this.setNewAvatar(response.data.link)
-          this.$refs.image.value = ''
+          this.$refs.file.value = ''
         }
       })
     }

@@ -43,74 +43,80 @@
             </ValidationProvider>
           </div>
 
-          <ValidationProvider
-            v-slot="{ errors, invalid }"
-            rules="required|email"
-            name="email"
-            tag="div"
-            class="mb-3"
-          >
-            <label>Email</label>
-            <input
-              v-model="localUser.email"
-              type="email"
-              class="form-control"
-              :class="{ 'is-invalid': invalid }"
-            />
-            <span v-if="errors.length" class="help-block text-danger">
-              {{ errors[0] }}
-            </span>
-          </ValidationProvider>
+          <div class="row">
+            <ValidationProvider
+              v-slot="{ errors, invalid }"
+              rules="required|email"
+              name="email"
+              tag="div"
+              class="col-md-6"
+            >
+              <label>Email</label>
+              <input
+                v-model="localUser.email"
+                type="email"
+                class="form-control"
+                :class="{ 'is-invalid': invalid }"
+              />
+              <span v-if="errors.length" class="help-block text-danger">
+                {{ errors[0] }}
+              </span>
+            </ValidationProvider>
 
-          <div class="mb-3">
-            <label>Аватар</label>
-            <br />
-            <!-- <img class="img-thumbnail" :src="localUser.picture" /> -->
-            <avatar-upload v-model="localUser.picture" />
-          </div>
-
-          <div class="mb-3">
-            <label>Возраст</label>
-            <input v-model="localUser.age" type="number" class="form-control" />
-          </div>
-
-          <div class="mb-3">
-            <label>Телефон</label>
-            <input v-model="localUser.phone" type="text" class="form-control" />
-          </div>
-
-          <div class="mb-3">
-            <label>Зарегистрирован</label>
-            <datepicker v-model="localUser.registered" />
-          </div>
-
-          <div class="mb-3">
-            <label>Активный</label>
-            <div class="checkbox-inline">
-              <input v-model="localUser.isActive" type="checkbox" /> Да
+            <div class="col-md-6">
+              <label>Телефон</label>
+              <input v-model="localUser.phone" type="text" class="form-control" />
             </div>
           </div>
 
-          <div class="mb-3">
-            <label>Уровень доступа</label>
-            <select v-model="localUser.accessLevel" class="form-control">
-              <option v-for="item in accessList" :key="item">{{ item }}</option>
-            </select>
+          <div class="form-group">
+            <label>Аватар</label>
+            <avatar-upload v-model="localUser.picture" />
           </div>
 
-          <div class="mb-3">
-            <label>Баланс</label>
-            <input v-model="localUser.balance" type="text" class="form-control" />
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label>Возраст</label>
+              <input v-model="localUser.age" type="number" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+              <label>Зарегистрирован</label>
+              <datepicker v-model="localUser.registered" />
+            </div>
           </div>
 
-          <div class="mb-3">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label>Уровень доступа</label>
+              <select v-model="localUser.accessLevel" class="form-control">
+                <option v-for="item in accessList" :key="item">{{ item }}</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label>Активный</label>
+              <div class="checkbox-inline">
+                <input v-model="localUser.isActive" type="checkbox" /> Да
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label>Компания</label>
+              <input v-model="localUser.company" type="text" class="form-control" />
+            </div>
+
+            <div class="col-md-6">
+              <label>Баланс</label>
+              <input v-model="localUser.balance" type="text" class="form-control" />
+            </div>
+          </div>
+
+          <div class="form-group">
             <label>Адрес</label>
             <input v-model="localUser.address" type="text" class="form-control" />
-          </div>
-
-          <div class="mb-3">
-            <label>Компания</label>
-            <input v-model="localUser.company" type="text" class="form-control" />
           </div>
 
           <div class="mb-3">

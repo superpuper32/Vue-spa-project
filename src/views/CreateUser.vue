@@ -3,7 +3,7 @@
     <h2>Создание пользователя</h2>
 
     <div class="card">
-      <div class="card-header"></div>
+      <div class="card-header">{{ title }}</div>
       <div class="card-body bg-light">
         <user-form v-model="user">
           <div slot="buttons">
@@ -46,6 +46,13 @@ export default {
     return {
       user: defaultUser,
       url: 'http://localhost:3004/users/'
+    }
+  },
+  computed: {
+    title() {
+      return !this.user.firstName || !this.user.lastName
+        ? 'Новый пользователь'
+        : [this.user.firstName, this.user.lastName].join(' ')
     }
   },
   methods: {

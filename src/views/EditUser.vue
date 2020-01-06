@@ -16,7 +16,7 @@
               Сохранить
             </button>
 
-            <button type="button" class="btn btn-outline-danger" @click="remove">
+            <button type="button" class="btn btn-outline-danger ml-2" @click="remove">
               Удалить
             </button>
           </div>
