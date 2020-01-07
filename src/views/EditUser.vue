@@ -11,7 +11,7 @@
 
       <div class="card-body bg-light">
         <user-form v-model="user">
-          <div slot="buttons">
+          <template v-slot:buttons>
             <button type="button" class="btn btn-primary" @click="save">
               Сохранить
             </button>
@@ -19,7 +19,7 @@
             <button type="button" class="btn btn-outline-danger ml-2" @click="remove">
               Удалить
             </button>
-          </div>
+          </template>
         </user-form>
       </div>
     </div>
@@ -64,19 +64,23 @@ export default {
         .then(response => (this.user = response.data))
         .catch(error => console.error(error))
     },
+    push() {
+      this.$router.push({ path: '/users' })
+    },
     save() {
       axios
         .patch(this.url, this.user)
-        .then(() => this.$router.push({ path: '/users' }))
+        .then(() => this.push())
         .catch(error => console.error(error))
     },
     remove() {
       const confirmRemove = confirm('Are you sure to remove this user?')
       if (!confirmRemove) return
 
-      axios.delete(this.url).then(() => {
-        this.$router.push({ path: '/users' })
-      })
+      axios
+        .delete(this.url)
+        .then(() => this.push())
+        .catch(error => console.error(error))
     }
   }
 }
