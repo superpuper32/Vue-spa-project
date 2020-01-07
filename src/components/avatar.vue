@@ -1,7 +1,7 @@
 <template>
   <div ref="imagezone">
     <p>
-      <img class="img-thumbnail mx-auto" :src="picture" />
+      <img class="img-thumbnail" :src="picture" />
     </p>
 
     <div class="row">

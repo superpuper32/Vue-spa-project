@@ -1,7 +1,7 @@
 <template>
   <div class="bg-light">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <router-link class="navbar-brand" tag="a" to="/">
+      <router-link class="navbar-brand" to="/">
         SINPAGAPP
       </router-link>
 
@@ -53,8 +53,6 @@
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-
 export default {
   name: 'App'
 }

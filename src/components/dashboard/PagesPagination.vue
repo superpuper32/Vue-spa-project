@@ -1,18 +1,18 @@
 <template>
   <nav aria-label="Page navigation">
     <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+      <li class="page-item" :class="{ disabled: page === 1 }">
+        <a href="#" class="page-link" aria-label="Previous" @click.prevent="prevPage">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
 
-      <li v-for="item in maxPages" :key="item" class="page-item">
+      <li v-for="item in maxPages" :key="item" class="page-item" :class="{ active: page === item }">
         <a class="page-link" href="#" @click.prevent="selectPage(item)">{{ item }}</a>
       </li>
 
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+      <li class="page-item" :class="{ disabled: page === maxPages }">
+        <a class="page-link" href="#" aria-label="Next" @click.prevent="nextPage">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
@@ -48,6 +48,16 @@ export default {
   methods: {
     selectPage(page) {
       this.$emit('input', page)
+    },
+
+    prevPage() {
+      const page = this.page - 1
+      page > 0 ? this.selectPage(page) : 0
+    },
+
+    nextPage() {
+      const page = this.page + 1
+      page <= this.maxPages ? this.selectPage(page) : 0
     }
   }
 }
