@@ -23,7 +23,9 @@
 
       <table class="table table-hover table-striped">
         <thead>
-          <slot name="table-header" />
+          <tr>
+            <slot name="table-header" />
+          </tr>
         </thead>
 
         <tbody>

@@ -4,16 +4,14 @@
 
     <user-list :url="url">
       <template v-slot:table-header>
-        <tr>
-          <th>#</th>
-          <th>Имя</th>
-          <th>Фамилия</th>
-          <th>Телефон</th>
-        </tr>
+        <th>#</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Телефон</th>
       </template>
       <template v-slot:table-row="props">
         <td>
-          <router-link :to="'/edit/' + props.id">{{ props.id }}</router-link>
+          <router-link :to="`/edit/${props.id}`">{{ props.id }}</router-link>
         </td>
         <td>{{ props.firstName }}</td>
         <td>{{ props.lastName }}</td>
