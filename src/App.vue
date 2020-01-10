@@ -2,7 +2,7 @@
   <div class="bg-light">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <RouterLink class="navbar-brand" to="/">
-        {{ $store.state.navbarTitle }}
+        {{ $store.state.navbarTitle }} {{ $store.getters.titleCount }}
       </RouterLink>
 
       <button
@@ -54,7 +54,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    title() {
+      return this.$store.state.navbarTitle + ' ' + this.$store.getters.titleCount
+    }
+  }
 }
 </script>
 

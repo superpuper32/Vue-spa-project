@@ -135,9 +135,9 @@
 export default {
   name: 'UserForm',
   components: {
-    datepicker: () => import('@/components/datepicker.vue'),
-    avatarUpload: () => import('@/components/avatar.vue'),
-    richEditor: () => import('@/components/richEditor.vue')
+    Datepicker: () => import('@/components/Datepicker.vue'),
+    AvatarUpload: () => import('@/components/AvatarUpload.vue'),
+    RichEditor: () => import('@/components/RichEditor.vue')
   },
   model: {
     prop: 'user',
