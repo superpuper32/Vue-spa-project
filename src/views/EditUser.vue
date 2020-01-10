@@ -64,13 +64,13 @@ export default {
         .then(response => (this.user = response.data))
         .catch(error => console.error(error))
     },
-    push() {
+    backToUsers() {
       this.$router.push({ path: '/users' })
     },
     save() {
       axios
         .patch(this.url, this.user)
-        .then(() => this.push())
+        .then(() => this.backToUsers())
         .catch(error => console.error(error))
     },
     remove() {
@@ -79,7 +79,7 @@ export default {
 
       axios
         .delete(this.url)
-        .then(() => this.push())
+        .then(() => this.backToUsers())
         .catch(error => console.error(error))
     }
   }
