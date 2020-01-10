@@ -2,7 +2,7 @@
   <div>
     <h2>Список телефонов пользователей</h2>
 
-    <user-list :url="url">
+    <UserList :url="url">
       <template v-slot:table-header>
         <th>#</th>
         <th>Имя</th>
@@ -11,13 +11,13 @@
       </template>
       <template v-slot:table-row="props">
         <td>
-          <router-link :to="`/edit/${props.id}`">{{ props.id }}</router-link>
+          <RouterLink :to="`/edit/${props.id}`">{{ props.id }}</RouterLink>
         </td>
         <td>{{ props.firstName }}</td>
         <td>{{ props.lastName }}</td>
         <td>{{ props.phone }}</td>
       </template>
-    </user-list>
+    </UserList>
   </div>
 </template>
 

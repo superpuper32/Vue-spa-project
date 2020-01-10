@@ -5,17 +5,17 @@
     <div class="card">
       <div class="card-header">{{ title }}</div>
       <div class="card-body bg-light">
-        <user-form v-model="user">
+        <UserForm v-model="user">
           <template v-slot:buttons>
-            <router-link tag="button" type="button" class="btn btn-secondary" to="/users">
+            <RouterLink tag="button" type="button" class="btn btn-secondary" to="/users">
               Назад
-            </router-link>
+            </RouterLink>
 
             <button type="button" class="btn btn-primary ml-2" @click="create">
               Создать
             </button>
           </template>
-        </user-form>
+        </UserForm>
       </div>
     </div>
   </div>
