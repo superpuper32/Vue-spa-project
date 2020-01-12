@@ -71,7 +71,7 @@
 
           <div class="form-group">
             <label>Аватар</label>
-            <avatar-upload v-model="localUser.picture" />
+            <AvatarUpload v-model="localUser.picture" />
           </div>
 
           <div class="row mb-3">
@@ -82,7 +82,7 @@
 
             <div class="col-md-6">
               <label>Зарегистрирован</label>
-              <datepicker v-model="localUser.registered" />
+              <Datepicker v-model="localUser.registered" />
             </div>
           </div>
 
@@ -121,7 +121,7 @@
 
           <div class="mb-3">
             <label>Биография</label>
-            <rich-editor v-model="localUser.about" />
+            <RichEditor v-model="localUser.about" />
           </div>
 
           <slot name="buttons" />
@@ -135,9 +135,9 @@
 export default {
   name: 'UserForm',
   components: {
-    datepicker: () => import('@/components/datepicker.vue'),
-    avatarUpload: () => import('@/components/avatar.vue'),
-    richEditor: () => import('@/components/richEditor.vue')
+    Datepicker: () => import('@/components/Datepicker.vue'),
+    AvatarUpload: () => import('@/components/AvatarUpload.vue'),
+    RichEditor: () => import('@/components/RichEditor.vue')
   },
   model: {
     prop: 'user',

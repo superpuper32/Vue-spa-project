@@ -10,7 +10,7 @@
       <div class="card-header">{{ user.id }} - {{ title }}</div>
 
       <div class="card-body bg-light">
-        <user-form v-model="user">
+        <UserForm v-model="user">
           <template v-slot:buttons>
             <button type="button" class="btn btn-primary" @click="save">
               Сохранить
@@ -20,7 +20,7 @@
               Удалить
             </button>
           </template>
-        </user-form>
+        </UserForm>
       </div>
     </div>
   </div>
@@ -64,15 +64,18 @@ export default {
         .then(response => (this.user = response.data))
         .catch(error => console.error(error))
     },
+    
     backToUsers() {
       this.$router.push({ path: '/users' })
     },
+
     save() {
       axios
         .patch(this.url, this.user)
         .then(() => this.backToUsers())
         .catch(error => console.error(error))
     },
+
     remove() {
       const confirmRemove = confirm('Are you sure to remove this user?')
       if (!confirmRemove) return

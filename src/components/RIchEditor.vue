@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-editor v-model="content" />
+    <VueEditor v-model="content" />
   </div>
 </template>
 

@@ -16,7 +16,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-4 mb-3">
-          <rows-selector v-model.number="rowsPerPage" />
+          <RowsSelector v-model.number="rowsPerPage" />
           <label for="country">Выбрано элементов на страницу - {{ rowsPerPage }}</label>
         </div>
       </div>
@@ -38,11 +38,7 @@
 
     <div class="card-footer">
       <div class="form-group">
-        <pages-pagination
-          v-model.number="selectedPage"
-          :per-page="rowsPerPage"
-          :total="totalRows"
-        />
+        <PagesPagination v-model.number="selectedPage" :per-page="rowsPerPage" :total="totalRows" />
         <p>Выбрана страница - {{ selectedPage }}</p>
       </div>
     </div>

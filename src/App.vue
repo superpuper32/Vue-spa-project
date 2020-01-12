@@ -1,9 +1,9 @@
 <template>
   <div class="bg-light">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <router-link class="navbar-brand" to="/">
-        SINPAGAPP
-      </router-link>
+      <RouterLink class="navbar-brand" to="/">
+        {{ $store.state.navbarTitle }} {{ $store.getters.titleCount }}
+      </RouterLink>
 
       <button
         class="navbar-toggler"
@@ -19,42 +19,47 @@
 
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-          <router-link tag="li" class="nav-item" to="/">
+          <RouterLink tag="li" class="nav-item" to="/">
             <a href="#" class="nav-link">
               Home
             </a>
-          </router-link>
+          </RouterLink>
 
-          <router-link tag="li" class="nav-item" to="/users">
+          <RouterLink tag="li" class="nav-item" to="/users">
             <a href="#" class="nav-link">
               Users
             </a>
-          </router-link>
+          </RouterLink>
 
-          <router-link tag="li" class="nav-item" to="/phones">
+          <RouterLink tag="li" class="nav-item" to="/phones">
             <a href="#" class="nav-link">
               Users Phones
             </a>
-          </router-link>
+          </RouterLink>
 
-          <router-link tag="li" class="nav-item" to="/create">
+          <RouterLink tag="li" class="nav-item" to="/create">
             <a href="#" class="nav-link">
               Create
             </a>
-          </router-link>
+          </RouterLink>
         </ul>
       </div>
     </nav>
 
     <main id="app" role="main" class="container">
-      <router-view />
+      <RouterView />
     </main>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    title() {
+      return this.$store.state.navbarTitle + ' ' + this.$store.getters.titleCount
+    }
+  }
 }
 </script>
 
