@@ -48,7 +48,7 @@ export default {
       this.fp = flatpickr(this.$refs.datepicker, {
         locale: Russian,
         dateFormat: 'd.m.Y',
-        onChange: (_, dateStr) => this.update(dateStr)
+        onChange: (_, dateString) => this.update(dateString)
       })
     },
 
