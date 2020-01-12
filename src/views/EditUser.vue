@@ -64,7 +64,7 @@ export default {
         .then(response => (this.user = response.data))
         .catch(error => console.error(error))
     },
-
+    
     backToUsers() {
       this.$router.push({ path: '/users' })
     },
