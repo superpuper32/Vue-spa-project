@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <input v-model="title" type="text" class="form-control" />
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
@@ -13,6 +14,16 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  computed: {
+    title: {
+      get() {
+        return this.$store.state.navbarTitle
+      },
+      set(value) {
+        this.$store.commit('changeTitle', value)
+      }
+    }
   }
 }
 </script>
