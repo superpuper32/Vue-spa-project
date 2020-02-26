@@ -2,10 +2,7 @@
   <div>
     <h2>Список пользователей</h2>
 
-    <!-- <div v-if="!props.length" class="alert alert-warning">
-      Loading ...
-    </div> -->
-    <UserList :url="url">
+    <UserList title="Пользователей в базе" :url="url">
       <template v-slot:table-header>
         <th>#</th>
         <th>Имя</th>
